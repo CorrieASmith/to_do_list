@@ -11,15 +11,18 @@ class Task
     @description
   end
 
-  define_method(:completed?) do
+  define_method(:completed) do
     @completed
   end
 
-  define_method(:completed) do
-    if @completed
-      @completed = false
+  define_singleton_method(:task_complete) do |index|
+    task_to_edit = @@all_tasks.values_at(index)
+    task_to_edit_object = task_to_edit.shift()
+    @@all_tasks = @@all_tasks.shift(index)
+    if task_to_edit.completed
+      @@all_tasks.push(Task.new(task_to_edit_object.description, completed=false))
     else
-      @completed = true
+      @@all_tasks.push(Task.new(task_to_edit_object.description, completed=true))
     end
   end
 

@@ -27,4 +27,12 @@ describe("/", {:type => :feature}) do
     click_link('delete')
     expect(page).to have_no_content("Go To School")
   end
+
+  it("Marks a task complete") do
+    visit('/')
+    fill_in('description', :with => "Go To School")
+    click_button('Add')
+    click_link('done')
+    expect(page).to have_css('.ck-done')
+  end
 end

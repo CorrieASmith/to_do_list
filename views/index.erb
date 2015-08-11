@@ -2,7 +2,8 @@
 <div class="row">
   <ul class="ck-todolist">
     <% @tasks.each_with_index do |task, i| %>
-      <li class="ck-task"><%= task.description() %> - <a href="/delete?index=<%= i %>">delete</a></li>
+      <li class="ck-task<% if task.completed?() %> ck-done<% end %>"><%= task.description() %> - <a href="/delete?index=<%= i %>">delete</a>
+         - <a href="/completed?index=<%= i %>">done</a></li>
     <% end %>
   </ul>
 </div>

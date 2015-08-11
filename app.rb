@@ -22,3 +22,10 @@ get("/delete") do
   @tasks = Task.all()
   erb(:index)
 end
+
+get("/completed") do
+  index = params.fetch('index').to_i
+  Task.all().at(index).completed(index)
+  @tasks = Task.all()
+  erb(:index)
+end

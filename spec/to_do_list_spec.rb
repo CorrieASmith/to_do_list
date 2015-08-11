@@ -48,12 +48,12 @@ describe(Task) do
     end
   end
 
-  describe('#completed') do
+  describe('.task_complete') do
     it("checks if a single task is completed") do
       test_completed = Task.new("Eat Lunch")
-      test_completed.completed()
       test_completed.save()
-      expect(Task.all().at(0).completed?()).to(eq(true))
+      Task.task_complete(0)
+      expect(Task.all()).to(eq(true))
     end
   end
 end
