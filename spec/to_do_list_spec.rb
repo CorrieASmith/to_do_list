@@ -16,10 +16,18 @@ describe(Task) do
   end
 
   describe('#save') do
-    it ("saves new task with save method") do
+    it("saves new task with save method") do
       test_task = Task.new("Go To School")
       test_task.save()
       expect(Task.all()).to(eq([test_task]))
+    end
+  end
+
+  describe('.clear') do
+    it("empties all of the saved tasks") do
+      Task.new("Go To School")
+      Task.clear()
+      expect(Task.all()).to(eq([]))
     end
   end
 end
