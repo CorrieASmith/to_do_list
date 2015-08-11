@@ -1,9 +1,16 @@
 <h1>To Do List</h1>
-<form action="/word_count">
-  <div class="form-group">
-    <label for="my_word"></label>
-    <input id="my_word" name="my_word" class="form-control" type="text">
-  </div>
+<div class="row">
+  <ul class="ck-todolist">
+    <% @tasks.each_with_index do |task, i| %>
+      <li class="ck-task"><%= task.description() %> - <a href="/delete?index=<%= i %>">delete</a></li>
+    <% end %>
+  </ul>
+</div>
 
-  <button type="submit" class="btn btn-success">Add</button>
+<form action="/add" method="post">
+  <div class="form-group">
+    <label for="description">Add a Task:</label>
+    <input id="description" name="description" class="form-control" type="text">
+  </div>
+  <button type="submit" class="btn btn-primary">Add</button>
 </form>
