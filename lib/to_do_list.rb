@@ -18,10 +18,8 @@ class Task
   define_method(:completed) do
     if @completed
       @completed = false
-      completed?()
     else
       @completed = true
-      completed?()
     end
   end
 
