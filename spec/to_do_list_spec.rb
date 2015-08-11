@@ -8,4 +8,10 @@ describe(Task) do
       expect(test_task.description()).to(eq("Go To School"))
     end
   end
+
+  describe('.all') do
+    it("is empty at first") do
+      expect(Task.all()).to(eq([]))
+    end
+  end
 end
