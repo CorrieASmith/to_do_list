@@ -21,4 +21,8 @@ class Task
   define_singleton_method(:clear) do
     @@all_tasks = []
   end
+
+  define_singleton_method(:delete) do |index|
+    @@all_tasks.delete_at(index)
+  end
 end

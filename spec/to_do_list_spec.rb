@@ -1,5 +1,6 @@
 require('rspec')
 require('to_do_list')
+require('pry')
 
 describe(Task) do
   describe('#description') do
@@ -28,6 +29,17 @@ describe(Task) do
       Task.new("Go To School")
       Task.clear()
       expect(Task.all()).to(eq([]))
+    end
+  end
+
+  describe('#delete') do
+    it("deletes single task with delete method") do
+      test1 = Task.new("Go To School")
+      test1.save()
+      test2 = Task.new("Walk The Dog")
+      test2.save()
+      Task.delete(1)
+      expect(Task.all().at(0).description()).to(eq("Go To School"))
     end
   end
 end
