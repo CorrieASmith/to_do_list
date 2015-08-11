@@ -25,6 +25,6 @@ describe("/", {:type => :feature}) do
     fill_in('description', :with => "Go To School")
     click_button('Add')
     click_link('delete')
-    expect(page).to !have_content("Go To School")
+    expect(page).to have_no_content("Go To School")
   end
 end
