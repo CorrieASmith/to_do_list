@@ -3,6 +3,11 @@ require('to_do_list')
 require('pry')
 
 describe(Task) do
+
+  before() do
+    Task.clear()
+  end
+
   describe('#description') do
     it('properly stores added to_do_list item') do
       test_task = Task.new("Go To School")
@@ -40,6 +45,15 @@ describe(Task) do
       test2.save()
       Task.delete(1)
       expect(Task.all().at(0).description()).to(eq("Go To School"))
+    end
+  end
+
+  describe('#completed') do
+    it("checks if a single task is completed") do
+      test_completed = Task.new("Eat Lunch")
+      test_completed.completed()
+      test_completed.save()
+      expect(Task.all().at(0).completed?()).to(eq(true))
     end
   end
 end

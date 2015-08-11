@@ -2,12 +2,27 @@ class Task
 
   @@all_tasks = []
 
-  define_method(:initialize) do |description|
+  define_method(:initialize) do |description, completed=false|
     @description = description
+    @completed = completed
   end
 
   define_method(:description) do
     @description
+  end
+
+  define_method(:completed?) do
+    @completed
+  end
+
+  define_method(:completed) do
+    if @completed
+      @completed = false
+      completed?()
+    else
+      @completed = true
+      completed?()
+    end
   end
 
   define_singleton_method(:all) do
